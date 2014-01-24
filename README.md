@@ -16,11 +16,11 @@ CLASSPATH="$CLASSPATH:/opt/tomcat-zookeeper/shared/javassist-3.18.1-GA.jar:/opt/
 
 b、把依赖的jar包放到tomcat的shared目录下面（core-aop-0.0.1.jar、javassist-3.18.1-GA.jar）
 
-输出：
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:1	startTime:1390442277245	endTime:1390442277245	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperService	methodName:getInstance	param:[]
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:2	startTime:1390442277246	endTime:1390442277246	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperService	methodName:getConfigClient	param:["196"]
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:3	startTime:1390442277246	endTime:1390442277247	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperResource	methodName:convertNodePath	param:["safety.mongodb.files"]
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:4	startTime:1390442277247	endTime:1390442277247	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ConfigClient	methodName:getPath	param:["safety/mongodb/files"]
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:5	startTime:1390442277247	endTime:1390442277255	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ConfigClient	methodName:getItem	param:["safety/mongodb/files"]
-Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:6	startTime:1390442277247	endTime:1390442277256	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperResource	methodName:getNodeValue	param:["196","safety.mongodb.files"]
+输出：<br />
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:1	startTime:1390442277245	endTime:1390442277245	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperService	methodName:getInstance	param:[]</p>
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:2	startTime:1390442277246	endTime:1390442277246	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperService	methodName:getConfigClient	param:["196"]</p>
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:3	startTime:1390442277246	endTime:1390442277247	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperResource	methodName:convertNodePath	param:["safety.mongodb.files"]</p>
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:4	startTime:1390442277247	endTime:1390442277247	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ConfigClient	methodName:getPath	param:["safety/mongodb/files"]</p>
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:5	startTime:1390442277247	endTime:1390442277255	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ConfigClient	methodName:getItem	param:["safety/mongodb/files"]</p>
+<p>Track:sid:eb3dba5e-4984-4be9-8fa8-06f973370fa3	uid:6	startTime:1390442277247	endTime:1390442277256	porcess:509@vm-120	thread:http-9090-2	className:com.xikang.zookeeper.server.ZookeeperResource	methodName:getNodeValue	param:["196","safety.mongodb.files"]</p>
 
