@@ -28,6 +28,7 @@ public class Injection implements ClassFileTransformer {
         if (className.indexOf("/") != -1) {
             className = className.replaceAll("/", ".");
         }
+        
         try {
             ClassPool pool = ClassPool.getDefault();
 
@@ -37,14 +38,18 @@ public class Injection implements ClassFileTransformer {
                 cp = cp.substring(0, cp.length() - 1);
 
                 int pos = cp.indexOf("WEB-INF");
-                if (pos != -1) {
-                    String libPath = cp.substring(0, pos) + WEB;
-                    // 增加 WEB-INF/lib 下面的依赖包
-                    pool.insertClassPath(libPath + "/*");
-                }
+                String libPath = cp.substring(0, pos) + WEB;
+                // 增加 WEB-INF/lib 下面的依赖包
+                pool.insertClassPath(libPath + "/*");
 
                 // 增加 WEB-INF/classes 下面的类
                 pool.insertClassPath(cp);
+            }
+            
+            // 取得tomcat下面的依赖
+            String catalinaHome = System.getProperty("catalina.home");
+            if (catalinaHome != null && !catalinaHome.equals("")) {
+                pool.insertClassPath(catalinaHome + File.separatorChar + "lib/*");
             }
 
             // 通过包名获取类文件
