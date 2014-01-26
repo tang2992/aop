@@ -61,7 +61,7 @@ public class InjectionTest {
 
                 //在方法执行前插入代码
                 m.insertBefore("{ com.coffee.core.aop.Process.before($args); }");
-                m.insertAfter("{ com.coffee.core.aop.Process.after(); }");
+                m.insertAfter("{ com.coffee.core.aop.Process.after($args); }");
             } catch (NotFoundException e) {
             } catch (CannotCompileException e) {
             }
