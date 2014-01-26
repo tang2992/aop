@@ -20,7 +20,9 @@ public class Injection implements ClassFileTransformer {
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
             ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         // 如果加载Business类才拦截
-        if (className == null || !className.startsWith("com/xikang")) {
+        if (className == null 
+                || (!className.startsWith("com/xikang") 
+                && !className.equals("com/sun/jersey/spi/container/servlet/WebComponent"))) {
             return null;
         }
 
@@ -54,12 +56,20 @@ public class Injection implements ClassFileTransformer {
 
             // 通过包名获取类文件
             CtClass cc = pool.get(className);
-            // 获得所有方法名的方法
-            CtMethod[] cms = cc.getDeclaredMethods();
-            for (CtMethod m : cms) {
-                m.insertBefore("{ com.coffee.core.aop.Process.before($args); }");
-                m.insertAfter("{ com.coffee.core.aop.Process.after($args); }");
+            
+            // 不同类的不同处理方法（待改）
+            if (className.equals("com.sun.jersey.spi.container.servlet.WebComponent")) {
+                CtMethod m = cc.getDeclaredMethod("service");
+                m.insertBefore("{ com.coffee.core.aop.Process.start($args); }");
+            } else {
+                // 获得所有方法名的方法
+                CtMethod[] cms = cc.getDeclaredMethods();
+                for (CtMethod m : cms) {
+                    m.insertBefore("{ com.coffee.core.aop.Process.before($args); }");
+                    m.insertAfter("{ com.coffee.core.aop.Process.after($args); }");
+                }
             }
+            
             return cc.toBytecode();
         } catch (NotFoundException e) {
             e.printStackTrace();

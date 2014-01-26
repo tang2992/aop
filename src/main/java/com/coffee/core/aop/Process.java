@@ -14,10 +14,15 @@ public class Process {
 
     public static final ThreadLocal<SysTrack> tl = new ThreadLocal<SysTrack>();
 
+    public static void start(Object[] objs) {
+        tl.remove();
+    }
+
     public static void before(Object[] objs) {
         SysTrack st = (SysTrack) tl.get();
         if (st == null) {
             st = initSysTrack();
+            tl.set(st);
         } else {
             st.setStartTime(System.currentTimeMillis());
         }
@@ -29,6 +34,7 @@ public class Process {
         if (st == null) {
             System.out.println("系统异常");
             st = initSysTrack();
+            tl.set(st);
         }
 
         // UID的处理
@@ -65,7 +71,6 @@ public class Process {
         SysTrack st = new SysTrack();
         st.setSid(UUID.randomUUID().toString());
         st.setStartTime(System.currentTimeMillis());
-        tl.set(st);
         return st;
     }
 }
